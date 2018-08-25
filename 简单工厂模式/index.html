@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>简单工厂模式</title>
+    </head>
+    <body>
+    </body>
+</html>
+<script type="text/javascript" src='./Basketball.js'></script>
+<script type="text/javascript" src='./Football.js'></script>
+<script type="text/javascript" src='./Tennis.js'></script>
+<script type="text/javascript">
+    // 运动工厂
+    var SportsFactory = function(name) {
+        switch(name){
+            case 'NBA':
+                return new Basketball();
+            case 'wordCup':
+                return new Football();
+            case 'FrenchOpen':
+                return new Tennis();
+        }
+    }
+
+    var football = SportsFactory('wordCup');
+    console.log(football);
+    console.log(football.intro);
+    football.getMember();
+</script>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>装饰者模式</title>
+    </head>
+    <body>
+        <div class="form-group">
+                <label for="user">请输入用户名:</label>
+                <input type="text" id="user_input" >
+            </div>
+            <div class="form-group">
+                <label for="phone">请输入手机号码:</label>
+                <input type="tel"  id="phone_input" onclick="alert('我是手机号input')">
+            </div>
+            <div class="form-group">
+                <label for="email">请输入邮箱:</label>
+                <input type="text" id="email_input">
+            </div>
+    </body>
+</html>
+<script type="text/javascript" src='./Decorator.js'></script>
+<script type="text/javascript">
+    Decorator('user_input', function() {
+        document.getElementById('user_input').value = '默认请输入用户名';
+    });
+    Decorator('phone_input', function() {
+        console.log(1111);
+        document.getElementById('phone_input').value = '默认请输入手机号';
+    });
+    Decorator('email_input', function() {
+        document.getElementById('email_input').value = '请输入邮箱';
+    })
+</script>

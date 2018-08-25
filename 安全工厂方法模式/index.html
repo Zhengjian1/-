@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id='container'></div>
+    </body>
+</html>
+<script type="text/javascript" src='./SafeFactory.js'></script>
+<script type="text/javascript">
+    var data = [
+        {type: 'JavaScript', content: 'JavaScript哪家强'},
+        {type: 'Java', content: 'Java哪家强'},
+        {type: 'php', content: 'php哪家强'},
+        {type: 'JavaScript', content: 'JavaScript哪家强2'},
+        {type: 'JavaScript', content: 'JavaScript哪家强3'},
+        {type: 'JavaScript', content: 'JavaScript哪家强4'},
+    ];
+
+    for(var i = 5 ; i >= 0 ; i--) {
+        Factory(data[i].type, data[i].content);
+    }
+</script>

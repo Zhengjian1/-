@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+            <div id='app'></div>
+    </body>
+</html>
+<script type="text/javascript" src='./MVC.js'></script> 
+<script type="text/javascript">
+ MVC.addModel('demo', {
+        title: '前端',
+        intro: '好难学',
+        item: {
+            key: '这是key',
+            value: '这是value'
+        }
+})
+
+  MVC.addView('demo', function(model, template) {
+        // 第一步获取容器元素
+        var dom = document.getElementById('app');
+        // 第二步获取模型中的数据
+        var data = model.get('demo');
+        //  第三部定义模板
+        var tpl = '<h1>{#title#}{#intro#}</h1><h2><span>{#item.key#}</span><strong>{#item.value#}</strong></h2>';
+        //  第四步定义字符串
+        var html = '';
+        //  第五步格式化模板字符串
+        html = template(tpl, data)
+        //  第六步将模板字符串渲染到页面中
+        dom.innerHTML = html;
+        //  第七部将dom返回
+        return dom;
+ })
+
+  MVC.addCtrl('demo', function(model, view){
+        var dom =  view.create('demo');
+        
+  });
+
+MVC.Controller.init();
+
+</script>

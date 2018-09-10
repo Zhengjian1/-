@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    </body>
+</html>
+<script type="text/javascript" src='./Waiter.js'></script>
+<script type="text/javascript">
+    var waiter = new Waiter();
+    // 第一个彩蛋，5秒后停止
+    var first = function () {
+        // 创建监控对象
+        var dtd = waiter.Deferred();
+        setTimeout(function(){
+            console.log('first finish');
+            // 发布解决成功消息
+            dtd.resolve();
+        }, 5000);
+        return dtd;
+    }();
+
+    // 第二个彩蛋，10秒后停止
+    var second = function() {
+        // 创建监控对象
+        var dtd = waiter.Deferred();
+        setTimeout(function() {
+            console.log('second finish');
+            // 发布解决成功消息
+            dtd.resolve();
+        }, 10000);
+        return dtd;
+    }();
+
+    waiter
+        // 监控两个彩蛋
+        .when(first, second)
+        // 添加成功回调
+        .done(function() {
+            console.log('sucess');
+        }, function() {
+            console.log('sucess again')
+        })
+        // 添加失败回调函数
+        .fail(function(){
+            console.log('fail')
+        })
+</script>
